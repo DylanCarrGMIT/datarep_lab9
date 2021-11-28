@@ -85,7 +85,14 @@ app.get('/api/movies', (req, res) => {
       
 })
 
+app.delete('/api/movies/:id',(req,res)=>{
+    console.log("Delete Movie: " +req.params.id);
 
+    movieModel.findByIdAndDelete(req.params.id,(err, data)=>{
+        res.send(data);
+    })
+
+})
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
